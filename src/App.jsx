@@ -14,7 +14,7 @@ class App extends Component {
     }
   }
   search() {
-    console.log('this.state', this.state);
+    // console.log('this.state', this.state);
     const BASE_URL = 'https:api.spotify.com/v1/search?';
     let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
     const ALBUM_URL = `https://api.spotify.com/v1/artists/`;
@@ -25,7 +25,7 @@ class App extends Component {
     .then(response => response.json())
     .then(json => {
       const artist = json.artists.items[0];
-      console.log('artist:', artist);
+      // console.log('artist:', artist);
       this.setState({artist});
       
       FETCH_URL = `${ALBUM_URL}${artist.id}/top-tracks?country=US&`
@@ -34,7 +34,7 @@ class App extends Component {
       })
       .then(response => response.json())
       .then(json => {
-        console.log('artist\'s top tracks:', json);
+        // console.log('artist\'s top tracks:', json);
         //이렇게 한꺼번에 요소별로 오브젝트를 생성할 수도 있음
         //const { tracks title} = {json.tracsk, json.title}
         const { tracks } = json;
